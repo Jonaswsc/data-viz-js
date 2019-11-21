@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <h4>Exploratory Data Visualization of Airbnb Dataset in Hong Kong</h4>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        Chart 1
+        <div id="types-of-accommodation-chart"></div>
+       </div>
+
+       <div class="col-8">
+         Chart 2
+         <div id="accomodation-price-chart"></div>
+       </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        Chart 3 
+        <div id="neighbourhood-chart"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load the library -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  
+  <!-- Load data -->
+  <script src="data/airbnb-data.js"></script>
+
+  <!-- Load types of accommodation chart -->
+  <script src="charts/types-of-accommodation.js"></script> -->
+
+  <!-- Load accomodation price chart -->
+  <script src="charts/accomodation-prices.js"></script>
+
+  <!-- Load neighbourhood chart -->
+  <script src="charts/Neighbourhood.js"></script>
+
+  <script>
+    const airbnbDataUrl = 'https://raw.githubusercontent.com/Luodina/js-data-viz/3rd-stage/step-4-render-neighbourhood-chart/data/airbnb-data.json';
+    fetch(airbnbDataUrl)
+    .then(response => response.json())
+    .then(accommodations => {
+    // Create types of accommodation chart
+    makeChartForAccommodationTypes(window.airbnbAccommodationData);
+    // Create accomodation prices chart
+    accomodationPriceChart(window.airbnbAccommodationData);
+    // Create neighbourhood chart
+    makeChartForNeighbourhood(window.airbnbAccommodationData);
+    }); 
+  </script>
+</body>
+</html>
